@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section id="about" className="scroll-mt-32 space-y-5">
       <h2 className="font-display text-2xl font-bold text-maroon sm:text-[30px]">
-        About Isabel
+        About Me
       </h2>
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.5fr_1fr]">

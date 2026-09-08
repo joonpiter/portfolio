@@ -27,8 +27,8 @@ export const contactEmail = profile.email;
 
 export const about = {
   bio: [
-    "I'm an Informatics student at UW who ended up in product management by way of asking too many questions about how things are built. Across a few internships in banking and nonprofit tech, I've kept coming back to the same thing: talk to the people using the thing, then go fix the part that's actually broken.", // PLACEHOLDER — tweak to your voice
-    "Outside of internships you'll find me co-authoring HCI research, organizing equity-focused tech programs, or rearranging my sticky notes for the third time this week.", // PLACEHOLDER
+    "I'm a student who found a growing passion for fintech. I've interned as a product manager with Bank of America and US Bank — on everything from products that impact bankers at retail locations to tools for traders working the global markets.",
+    "Outside of my professional experience, I love to crochet and do pottery in my free time. You'll usually find me in Seattle reading with a nice cup of oolong tea, or flying around the country on some crazy adventure (mostly conferences, haha).",
   ],
   highlights: [
     "NASA Studentship recipient ($20,000)",
@@ -80,19 +80,18 @@ export const myspace = {
   ] as [string, string][],
   interests: {
     General:
-      "Product & HCI, equity in tech, early-web nostalgia, community organizing, museums.",
-    Music: "City pop, cumbia sonidera, Mitski, bedroom pop, anything with a good bassline.",
-    Film: "Y tu mamá también, Everything Everywhere All At Once, Studio Ghibli.",
-    Books:
-      "The Design of Everyday Things, Borderlands / La Frontera, Klara and the Sun.",
-    Heroes:
-      "First-gen students who send the elevator back down; my mom; every user who fills out a survey honestly.",
+      "Pottery, crocheting, tea, museums, Broadway — please talk to me about musicals, haha.",
+    Music:
+      "BTS, Noah Kahan, Waitress, Buena Vista Social Club, The Crane Wives, Mitski, Hatsune Miku.",
+    "Film & TV":
+      "The Office, Frasier, What Did You Eat Yesterday?, Dead Poets Society, Coraline.",
+    Books: "The Vanishing Middle Class, Abundance.",
   },
   details: {
-    Status: "Open to internships",
+    Status: "Open to the right opportunity",
     "Here for": "Networking, friends, showing my work",
     Hometown: "Seattle, WA",
-    Occupation: "Product Management student · UW Informatics",
+    Occupation: "Student, future employed person",
     Education: "University of Washington — Interdisciplinary Honors",
     "Zodiac Sign": "Gemini",
   },
