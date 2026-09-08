@@ -12,7 +12,7 @@ export const profile = {
   gradYear: "Class of 2027",
   location: "Seattle, WA",
   cityLine:
-    "Seattle-born and raised — powered by flat whites, undeterred by the rain, and still not over how good the mountains look on a clear day.", // PLACEHOLDER
+    "Born and raised in Seattle, WA — ethnically from Mexico and El Salvador, though I'm usually in Chinatown.",
   email: "iamayacontact@gmail.com", // every "email me" link on the site points here
   links: {
     linkedin: "https://www.linkedin.com/in/isabel-amaya123/",
@@ -97,7 +97,7 @@ export const myspace = {
   },
   // MySpace "Who I'd like to meet" — the bio itself lives in `about.bio`.
   whoIdLikeToMeet:
-    "PMs who came in from a non-traditional path, researchers working on accessible and multilingual tools, and anyone still keeping a corner of the weird old web alive.",
+    "Students struggling to navigate the product or recruiting process, and professionals who understand what it means to thrive in corporate America.",
 };
 
 export const education = {
