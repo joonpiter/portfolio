@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import ProfileShell from "@/components/ProfileShell";
+import TravelMap from "@/components/TravelMap";
 import { profile } from "@/data/content";
 import { posts } from "@/data/posts";
 
@@ -41,14 +42,18 @@ export default async function BlogPost(props: PageProps<"/blog/[slug]">) {
           {post.title}
         </h2>
 
-        <div className="module">
-          <p className="module-head">Entry</p>
-          <div className="space-y-4 px-4 py-4 text-[13.5px] leading-relaxed">
-            {post.content.map((paragraph, i) => (
-              <p key={i}>{paragraph}</p>
-            ))}
+        {post.slug === "where-ive-been" ? (
+          <TravelMap />
+        ) : (
+          <div className="module">
+            <p className="module-head">Entry</p>
+            <div className="space-y-4 px-4 py-4 text-[13.5px] leading-relaxed">
+              {post.content.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </article>
     </ProfileShell>
   );

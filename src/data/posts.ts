@@ -15,6 +15,17 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    // Rendered as an interactive map (see src/components/TravelMap.tsx).
+    // Update the pins in src/data/travels.ts.
+    slug: "where-ive-been",
+    title: "Where I've Been",
+    date: "Updated September 2026",
+    tag: "travel",
+    excerpt:
+      "A living map of the cities I've made it to — hover a pin for the city and country.",
+    content: [],
+  },
+  {
     slug: "what-i-learned-shadowing-pms",
     title: "What I actually do as a PM intern (not what I thought I'd do)",
     date: "August 2026",

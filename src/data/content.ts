@@ -68,7 +68,7 @@ export const myspace = {
   mood: "curious 🌱",
   // Profile song, MySpace-style. Paste any Spotify playlist/album/track link
   // (or just its ID) — the embed figures out the rest.
-  playlist: "https://open.spotify.com/playlist/38AnYQKWfgjz9R3edzqvHU",
+  playlist: "https://open.spotify.com/playlist/0YHCZjfsmnUnehsM1ie4Zk",
   headline: '"What is a legacy? It\'s planting seeds in a garden you never get to see."',
   extendedNetwork:
     "Isabel Amaya is in your extended network",
