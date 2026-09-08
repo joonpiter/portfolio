@@ -21,13 +21,16 @@ export default function Hero() {
 
           <div className="mt-4 space-y-3 text-[15px] leading-relaxed">
             <p>
-              Hello! And welcome to my honors portfolio — I&apos;m {profile.name},
-              currently majoring in Informatics with a minor in Entrepreneurship.
+              Hello! My name is {profile.name}, and I&apos;m a student at the
+              University of Washington studying Informatics with Interdisciplinary
+              Honors and a minor in Entrepreneurship.
             </p>
             <p>
-              My portfolio is inspired by MySpace: a platform that let the early
-              web express itself and connect with one another. I hope it paints a
-              picture of my academic journey.
+              I&apos;m interested in product management, having interned at
+              companies such as Bank of America and US Bank. I&apos;m also a
+              published author, with work presented at conferences such as ACM CHI
+              and RESPECT. Please look around to learn more about me — it&apos;s
+              MySpace-inspired, if you can&apos;t tell&nbsp;;)
             </p>
           </div>
 
