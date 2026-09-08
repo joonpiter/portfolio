@@ -74,10 +74,9 @@ export const myspace = {
     "Isabel Amaya is in your extended network",
   // "What I'm up to right now" — shown under the welcome note on the home page.
   now: [
-    ["Building", "Custom ETF Basket tooling as a PM intern at Bank of America"],
-    ["Reading", "The Design of Everyday Things (for the third time)"],
-    ["Learning", "SQL window functions and a little causal inference"],
-    ["Listening", "the playlist above ↑"],
+    ["Building", "opportunities for students who might not know about them otherwise"],
+    ["Reading", "I Deliver Parcels in China by Hu Anyan"],
+    ["Learning", "Options, Futures, and Other Derivatives"],
   ] as [string, string][],
   interests: {
     General:
