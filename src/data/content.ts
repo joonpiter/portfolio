@@ -12,7 +12,7 @@ export const profile = {
   gradYear: "Class of 2027",
   location: "Seattle, WA",
   cityLine:
-    "Born and raised in Seattle, WA — ethnically from Mexico and El Salvador, though I'm usually in Chinatown.",
+    "Born and raised in Seattle, WA, missing the beaches of El Salvador and $1 tacos in Mexico.",
   email: "iamayacontact@gmail.com", // every "email me" link on the site points here
   links: {
     linkedin: "https://www.linkedin.com/in/isabel-amaya123/",
@@ -144,7 +144,7 @@ export type ExperienceItem = {
   role: string;
   org: string;
   period: string;
-  bullets: string[];
+  summary: string; // one punchy line — the headline result of the role
 };
 
 export const experience: ExperienceItem[] = [
@@ -152,50 +152,36 @@ export const experience: ExperienceItem[] = [
     role: "Product Management Intern",
     org: "Bank of America — New York City, NY",
     period: "June 2026 — Present",
-    bullets: [
-      "Drove product development for the Custom ETF Basket platform, scaling intake capacity 5x, from 500 to 2,500 baskets",
-      "Launched a dashboard unifying basket composition, alerts, and lifecycle activity — 64% adoption among trading-desk users",
-      "Leading discovery for an AI-First SDLC initiative; 6 PM interviews so far, projected to cut refinement time by 22%",
-    ],
+    summary:
+      "Built a click-in dashboard feature for traders to view the critical components of a basket, cutting handling time by 64%, and conducted the first phase of discovery for an AI-first SDLC within GMT.",
   },
   {
     role: "Product Management Intern",
     org: "US Bank — Minneapolis, MN",
     period: "June 2025 — August 2025",
-    bullets: [
-      "Directed end-to-end launch of a digital dashboard, aligning requirements across 2,000 branches and 22,000 employees",
-      "Led rollout of an AI service-workflow feature across 10M+ transactions and 1.2M+ call-center inquiries — cut costs 5%, lifted CSAT 15%",
-      "Mapped the call-center journey through stakeholder interviews; 10+ pain points cut banker task-completion time by 12%",
-    ],
+    summary:
+      "Launched a dashboard for banker-client interaction across 2,000+ US Bank branches and rolled an AI workflow affecting 10M+ transactions, cutting costs 5% and lifting CSAT 15%.",
   },
   {
     role: "Digital Product Management Intern",
     org: "AARP — Washington, DC (Remote)",
     period: "November 2024 — May 2025",
-    bullets: [
-      "Supported generative AI integration into a support chatbot serving 38M+ members, reducing agent call transfer rate by 12%",
-      "Built an automatic translation feature supporting 17 languages across Facebook, WhatsApp, and web, reaching 1.5M users",
-      "Analyzed support transcripts in Python to uncover inquiry patterns, lifting chatbot accuracy and UX by 19%",
-    ],
+    summary:
+      "Put generative AI into a chatbot for 38M+ members and shipped 17-language auto-translation reaching 1.5M users.",
   },
   {
     role: "Startup Venture Consultant",
     org: "Creative Destruction Lab — Seattle, WA",
     period: "September 2024 — March 2025",
-    bullets: [
-      "Built a prioritization framework ranking the top 20 enterprise customers, improving sales by 60%",
-      "Refined customer profiles with marketing, sales, and product, contributing to an early-adopter pipeline valued at $200M+",
-    ],
+    summary:
+      "Built the account-prioritization framework behind a $200M+ early-adopter pipeline and a 60% sales lift.",
   },
   {
-    role: "Research and Development Product Manager",
+    role: "R&D Product Manager",
     org: "Wordplay — Seattle, WA",
     period: "March 2024 — September 2024",
-    bullets: [
-      "Synthesized stakeholder feedback into prioritized usability fixes for product tutorials, reducing user pain points by 36%",
-      "Launched the first Spanish translation across desktop and mobile, achieving 95% user satisfaction",
-      "Resolved 63% of feedback-related issues on time, lifting project completion rate by 32%",
-    ],
+    summary:
+      "Cut user pain points 36% and shipped Wordplay's first Spanish translation to 95% satisfaction.",
   },
 ];
 
@@ -204,33 +190,29 @@ export const leadership: ExperienceItem[] = [
     role: "Director of Product",
     org: "Campus to Career — Dallas, TX (Remote)",
     period: "July 2026 — Present",
-    bullets: [
-      "Own the product roadmap, prioritizing features that help students access real career opportunities",
-    ],
+    summary:
+      "Own the roadmap for a platform connecting students to career opportunities they'd otherwise miss.",
   },
   {
-    role: "Diversity and Inclusion Committee Member",
+    role: "Diversity & Inclusion Committee Member",
     org: "Women in Informatics — Seattle, WA",
     period: "June 2026 — Present",
-    bullets: [
-      "Co-leading curriculum design for a week-long equity-focused tech hackathon for middle/high schoolers",
-    ],
+    summary:
+      "Co-designing the curriculum for a week-long equity-focused hackathon for middle & high schoolers.",
   },
   {
     role: "Venture Capital Fellow",
     org: "LGBT VC — New York City (Remote)",
     period: "October 2024 — December 2024",
-    bullets: [
-      "Led a research framework analyzing VC and industry trends across 19 verticals, coordinating 10 fellow analysts",
-    ],
+    summary:
+      "Led a 10-analyst research effort mapping VC and industry trends across 19 verticals.",
   },
   {
     role: "Accelerate Design Apprentice",
     org: "IBM — Remote",
     period: "June 2024 — July 2024",
-    bullets: [
-      "Selected as top 5% from 10,000+ applicants; completed a capstone on a business design issue",
-    ],
+    summary:
+      "Top 5% of 10,000+ applicants; shipped a capstone on a real business-design problem.",
   },
 ];
 

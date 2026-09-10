@@ -7,106 +7,124 @@ import {
   about,
 } from "@/data/content";
 
-function TimelineList({ items }: { items: ExperienceItem[] }) {
+function RoleList({ items }: { items: ExperienceItem[] }) {
   return (
-    <div className="flex flex-col">
+    <ol className="mt-5 divide-y divide-rule border-t border-rule">
       {items.map((item, i) => (
-        <div
-          key={i}
-          className="border-t border-border py-4 first:border-t-0 first:pt-1"
-        >
-          <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-0.5">
-            <h3 className="font-bold text-foreground">
-              {item.role}
-              <span className="font-normal text-muted"> — {item.org}</span>
-            </h3>
-            <p className="shrink-0 text-[11px] uppercase tracking-wide text-muted">
-              {item.period}
-            </p>
-          </div>
-          <ul className="mt-2 space-y-1 text-[13px] leading-snug">
-            {item.bullets.map((bullet, j) => (
-              <li key={j} className="flex gap-2">
-                <span className="mt-px shrink-0 text-[11px] text-maroon">★</span>
-                <span>{bullet}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <li key={i} className="py-8">
+          <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-maroon">
+            {item.period}
+          </p>
+          <h3 className="mt-2 font-display text-[21px] font-normal leading-snug text-foreground">
+            {item.role}
+            <span className="text-muted"> · {item.org}</span>
+          </h3>
+          <p className="mt-2.5 max-w-2xl text-[14.5px] leading-relaxed text-foreground/80">
+            {item.summary}
+          </p>
+        </li>
       ))}
-    </div>
+    </ol>
   );
 }
 
 export default function Experience() {
   return (
-    <section id="experience" className="scroll-mt-32 space-y-5">
-      <h2 className="font-display text-2xl font-bold text-maroon sm:text-[30px]">
-        Experience
-      </h2>
+    <div className="space-y-16">
+      <section id="experience">
+        <p className="eyebrow">
+          <span aria-hidden>⚗</span> Experience
+        </p>
 
-      <div className="module">
-        <p className="module-head">Work History</p>
-        <div className="px-4 py-2">
-          <TimelineList items={experience} />
-        </div>
-      </div>
+        <h1 className="mt-4 font-display text-[44px] font-normal leading-[1.05] text-foreground sm:text-[54px]">
+          Building products in fintech.
+        </h1>
 
-      <div className="module">
-        <p className="module-head">Leadership &amp; Involvement</p>
-        <div className="px-4 py-2">
-          <TimelineList items={leadership} />
-        </div>
-      </div>
+        <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted">
+          Product internships across trading desks, retail branches, and member
+          support: Bank of America, US Bank, AARP, and IBM. Updated September
+          2026.
+        </p>
+      </section>
 
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-        <div className="module">
-          <p className="module-head">Publications</p>
-          <ul className="space-y-2.5 px-4 py-3 text-[13px]">
-            {publications.map((pub) => (
-              <li key={pub.title}>
-                {pub.url ? (
-                  <a
-                    className="ms-link font-medium"
-                    href={pub.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {pub.title}
-                  </a>
-                ) : (
-                  <span className="font-medium">{pub.title}</span>
-                )}
-                <span className="text-muted"> — {pub.venue}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="border-t border-border px-4 py-2 text-[12px]">
-            <a
-              className="ms-link"
-              href={profile.links.acm}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Full list on my ACM author profile →
-            </a>
-          </p>
-        </div>
+      <section aria-labelledby="work-label">
+        <h2
+          id="work-label"
+          className="font-display text-[26px] font-normal text-foreground"
+        >
+          Work
+        </h2>
+        <RoleList items={experience} />
+      </section>
 
-        <div className="module">
-          <p className="module-head">Toolkit</p>
-          <div className="flex flex-wrap gap-1.5 px-4 py-3">
-            {about.skills.map((skill) => (
-              <span
-                key={skill}
-                className="border border-border bg-background px-2 py-0.5 text-[11px] text-foreground/80"
-              >
-                {skill}
+      <section aria-labelledby="leadership-label">
+        <h2
+          id="leadership-label"
+          className="font-display text-[26px] font-normal text-foreground"
+        >
+          Leadership &amp; Professional Development
+        </h2>
+        <RoleList items={leadership} />
+      </section>
+
+      <section aria-labelledby="pubs-label">
+        <h2
+          id="pubs-label"
+          className="font-display text-[26px] font-normal text-foreground"
+        >
+          Publications &amp; talks
+        </h2>
+        <ul className="mt-5 divide-y divide-rule border-t border-rule">
+          {publications.map((pub) => (
+            <li key={pub.title} className="py-6 text-[14.5px] leading-relaxed">
+              {pub.url ? (
+                <a
+                  className="font-medium text-foreground transition-colors hover:text-maroon"
+                  href={pub.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {pub.title} <span aria-hidden>↗</span>
+                </a>
+              ) : (
+                <span className="font-medium text-foreground">{pub.title}</span>
+              )}
+              <span className="mt-0.5 block text-[12.5px] text-muted">
+                {pub.venue}
               </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-[12.5px]">
+          <a
+            className="text-muted transition-colors hover:text-foreground"
+            href={profile.links.acm}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Full list on my ACM author profile →
+          </a>
+        </p>
+      </section>
+
+      <section aria-labelledby="toolkit-label">
+        <h2
+          id="toolkit-label"
+          className="font-display text-[26px] font-normal text-foreground"
+        >
+          Toolkit
+        </h2>
+        <ul className="mt-5 flex flex-wrap gap-2">
+          {about.skills.map((skill) => (
+            <li
+              key={skill}
+              className="rounded-full border border-border px-3 py-1 text-[12.5px] text-foreground/80"
+            >
+              {skill}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
   );
 }

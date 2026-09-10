@@ -1,6 +1,6 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import ProfileShell from "@/components/ProfileShell";
+import Notebook from "@/components/Notebook";
 import { profile } from "@/data/content";
 import { posts } from "@/data/posts";
 
@@ -11,39 +11,23 @@ export const metadata: Metadata = {
 export default function BlogIndex() {
   return (
     <ProfileShell>
-      <section className="space-y-5">
-        <h2 className="font-display text-2xl font-bold text-maroon sm:text-[30px]">
-          Blog
-        </h2>
-        <p className="text-[13px] text-muted">
-          Notes on internships, product, and whatever else is on my mind.
+      <section>
+        <p className="eyebrow">
+          <span aria-hidden>¶</span> Writing
         </p>
 
-        <div className="module">
-          <p className="module-head">Recent Entries</p>
-          <div className="flex flex-col px-4">
-            {posts.map((post) => (
-              <Link
-                key={post.slug}
-                href={`/blog/${post.slug}`}
-                className="group border-t border-border py-4 first:border-t-0"
-              >
-                <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted">
-                  <span className="border border-border bg-background px-1.5 py-0.5 uppercase tracking-wide">
-                    {post.tag}
-                  </span>
-                  <span>{post.date}</span>
-                </div>
-                <h3 className="mt-2 text-[15px] font-bold text-foreground group-hover:text-maroon">
-                  {post.title}
-                </h3>
-                <p className="mt-1 text-[13px] leading-relaxed text-foreground/80">
-                  {post.excerpt}
-                </p>
-                <p className="mt-2 text-[13px] text-link underline">Read more →</p>
-              </Link>
-            ))}
-          </div>
+        <h1 className="mt-4 font-display text-[44px] font-normal leading-[1.05] text-foreground sm:text-[56px]">
+          Essays and notes.
+        </h1>
+
+        <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted">
+          Longer essays and shorter updates on product management, my
+          internships, and the wandering of life, plus a living map of the
+          places I&rsquo;ve made it to.
+        </p>
+
+        <div className="mt-10">
+          <Notebook posts={posts} />
         </div>
       </section>
     </ProfileShell>

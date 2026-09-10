@@ -34,26 +34,41 @@ export default function Scene3D() {
         strategy="afterInteractive"
       />
       {/*
-        The viewer fills this box exactly — framing is handled by the Spline
-        camera. No CSS transform here: the scene's HTML hotspot layer is a
-        sibling <iframe> in the viewer's shadow DOM, and any reframing that
-        isn't tuned against would slide the render out from under the hotspots.
+        Break out of the page's narrow max-w-3xl text column so the box can
+        actually reach its max-width. This only repositions/widens the box —
+        the viewer still fills it 1:1 and the scene's HTML hotspot layer (a
+        sibling <iframe> in the viewer's shadow DOM) stays pinned to it, so
+        alignment is unaffected. Framing itself is the Spline camera's job.
       */}
-      <div
-        ref={boxRef}
-        style={{
-          aspectRatio: "5 / 4",
-          width: "100%",
-          maxWidth: "1100px",
-          margin: "0 auto",
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
-        <spline-viewer
-          url="https://prod.spline.design/MW-bcCyWXY4aSNeD/scene.splinecode"
-          style={{ display: "block", width: "100%", height: "100%" }}
-        />
+      <div className="relative left-1/2 w-screen -translate-x-1/2">
+        <div
+          ref={boxRef}
+          style={{
+            // Negative top margin tucks the box up under the text above,
+            // trimming the gap without cropping into the room. Tune the -7rem.
+            margin: "-7rem auto 0",
+            aspectRatio: "5 / 4",
+            width: "100%",
+            maxWidth: "1300px",
+            overflow: "hidden",
+            position: "relative",
+          }}
+        >
+          <spline-viewer
+            url="https://prod.spline.design/MW-bcCyWXY4aSNeD/scene.splinecode"
+            style={{
+              display: "block",
+              width: "100%",
+              height: "100%",
+              // Crop the scene's remaining headroom. A transform on the viewer
+              // moves the canvas AND the hotspot iframe as one, so the
+              // hotspots stay put relative to the render. Dial toward
+              // scale(1) once the Spline camera fully covers the frame.
+              transform: "scale(1.16) translateY(-9%)",
+              transformOrigin: "center top",
+            }}
+          />
+        </div>
       </div>
     </>
   );

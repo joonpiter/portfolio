@@ -133,14 +133,6 @@ body {
   text-decoration-color: var(--link);
 }
 
-/* Nudge the little arrow on hover. Written by hand with `transform` instead
-   of Tailwind's `group-hover:translate-x-*` utility — v4 generates those with
-   the standalone `translate` CSS property driven by a custom property, which
-   doesn't reliably repaint on :hover, so the nudge silently never appeared. */
-.group:hover .arrow-nudge {
-  transform: translateX(0.125rem);
-}
-
 @keyframes marquee {
   from {
     transform: translateX(0);

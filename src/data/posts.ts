@@ -10,9 +10,16 @@ export type Post = {
   date: string; // e.g. "September 2026"
   excerpt: string;
   tag: string;
+  kind: "essay" | "update"; // essays read long-form; updates are short notes
   content: string[]; // one string per paragraph
-  image?: string; // optional — shown on the homepage "From the Notebook" teaser
+  image?: string; // optional — thumbnail on the index + homepage teaser
 };
+
+/** Rough read time in whole minutes (>= 1), ~200 wpm. */
+export function readingMinutes(post: Post): number {
+  const words = post.content.join(" ").trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 200));
+}
 
 export const posts: Post[] = [
   {
@@ -20,36 +27,23 @@ export const posts: Post[] = [
     // Update the pins in src/data/travels.ts.
     slug: "where-ive-been",
     title: "Where I've Been",
-    date: "Updated September 2026",
-    tag: "travel",
+    date: "September 2026",
+    tag: "Travel",
+    kind: "update",
     excerpt:
-      "A living map of the cities I've made it to — hover a pin for the city and country.",
+      "A living map of the cities I've made it to. Hover a pin for the city and country.",
     content: [],
   },
   {
-    slug: "what-i-learned-shadowing-pms",
-    title: "What I actually do as a PM intern (not what I thought I'd do)",
-    date: "August 2026",
-    tag: "internship",
-    image: "/event-photo.jpg",
-    excerpt:
-      "Going in, I thought product management was mostly writing specs. Three internships later, here's what the job actually looks like.", // PLACEHOLDER
+    slug: "cheers-to-something-new",
+    title: "Cheers to something new",
+    date: "September 2026",
+    tag: "Personal",
+    kind: "essay",
+    excerpt: "On finally making this, and what I want to do with it.",
     content: [
-      "Going into my first PM internship, I thought the job was mostly writing specs and drawing roadmap boxes. Three internships later, the thing that's taken up the most of my time by far is just talking to people — engineers about what's actually feasible, users about what's actually annoying them, and stakeholders about what actually matters this quarter.", // PLACEHOLDER — replace with your real reflection
-      "The unglamorous truth is that most of the job is translation: turning a vague complaint into a specific problem statement, and turning a specific problem statement into something an engineer can build in a sprint. Nobody tells you that in the internship description.", // PLACEHOLDER
-      "If I could tell incoming interns one thing, it'd be this: the interview data is worth more than your own intuition, every single time. I've been wrong about what users wanted more times than I can count — the pattern only ever showed up once I actually asked.", // PLACEHOLDER
-    ],
-  },
-  {
-    slug: "co-authoring-a-chi-paper",
-    title: "Co-authoring a research paper as an undergrad",
-    date: "May 2025",
-    tag: "research",
-    excerpt:
-      "Notes on what it's actually like to go from a class project to a paper accepted at ACM CHI.", // PLACEHOLDER
-    content: [
-      "I didn't set out to write a research paper — Wordplay started as a product I was helping build, and the accessibility work we did on it turned out to be interesting enough to write up formally. The lesson: keep notes on your work as you go, even when you don't think it's going anywhere yet.", // PLACEHOLDER
-      "The actual writing process took longer than the project itself. Getting from 'we did a cool thing' to a defensible research contribution meant a lot of rewriting, and a lot of being told by advisors that my first draft buried the actual finding on page four.", // PLACEHOLDER
+      "I've been reluctant to make a portfolio for a while, mostly because I didn't know what to add. A lot of my most recent experience has been through internships at larger companies, where unless I was super vague on my details so as not to break confidentiality, it would negate the purpose of having a project tab.",
+      "But with a month before school starts, I've had a lot of dead time to work on something. I'll have some big projects that won't be under an NDA, so I'm hoping to finally show those to the public. I also want to use this to share some thoughts and the wandering of life. One more year until my current understanding of freedom is gone.",
     ],
   },
 ];
