@@ -44,7 +44,7 @@ export default function SpotifyPlaylist({
           title="Isabel's playlist"
           src={src}
           width="100%"
-          height={compact ? 152 : 352}
+          height={compact ? 400 : 352}
           loading="lazy"
           allowFullScreen
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"

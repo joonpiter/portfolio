@@ -11,6 +11,7 @@ export type Post = {
   excerpt: string;
   tag: string;
   content: string[]; // one string per paragraph
+  image?: string; // optional — shown on the homepage "From the Notebook" teaser
 };
 
 export const posts: Post[] = [
@@ -30,6 +31,7 @@ export const posts: Post[] = [
     title: "What I actually do as a PM intern (not what I thought I'd do)",
     date: "August 2026",
     tag: "internship",
+    image: "/event-photo.jpg",
     excerpt:
       "Going in, I thought product management was mostly writing specs. Three internships later, here's what the job actually looks like.", // PLACEHOLDER
     content: [

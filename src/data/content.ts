@@ -70,6 +70,9 @@ export const myspace = {
   // (or just its ID) — the embed figures out the rest.
   playlist: "https://open.spotify.com/playlist/0YHCZjfsmnUnehsM1ie4Zk",
   headline: '"What is a legacy? It\'s planting seeds in a garden you never get to see."',
+  // Single-sentence "Now" line shown on the homepage, under the "NOW" eyebrow.
+  nowSummary:
+    "Building opportunities for students who might not know about them otherwise, reading I Deliver Parcels in China by Hu Anyan, and working through Options, Futures, and Other Derivatives.",
   extendedNetwork:
     "Isabel Amaya is in your extended network",
   // "What I'm up to right now" — shown under the welcome note on the home page.
@@ -90,6 +93,7 @@ export const myspace = {
   details: {
     Status: "Open to the right opportunity",
     "Here for": "Networking, friends, showing my work",
+    Pronouns: "she / they",
     Hometown: "Seattle, WA",
     Occupation: "Student, future employed person",
     Education: "University of Washington — Interdisciplinary Honors",

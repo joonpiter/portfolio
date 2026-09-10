@@ -42,6 +42,7 @@ export default function TravelMap() {
   const [active, setActive] = useState<number | null>(null);
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [dragging, setDragging] = useState(false);
   const svgRef = useRef<SVGSVGElement | null>(null);
   const drag = useRef<{ x: number; y: number; px: number; py: number } | null>(null);
   const moved = useRef(false);
@@ -75,6 +76,7 @@ export default function TravelMap() {
     (e.currentTarget as Element).setPointerCapture?.(e.pointerId);
     drag.current = { x: e.clientX, y: e.clientY, px: pan.x, py: pan.y };
     moved.current = false;
+    setDragging(true);
   };
   const onPointerMove = (e: React.PointerEvent) => {
     if (!drag.current) return;
@@ -86,6 +88,7 @@ export default function TravelMap() {
   const onPointerUp = (e: React.PointerEvent) => {
     (e.currentTarget as Element).releasePointerCapture?.(e.pointerId);
     drag.current = null;
+    setDragging(false);
   };
 
   const zoomBtn = (f: number) => zoomAround(W / 2, H / 2, zoom * f);
@@ -121,7 +124,7 @@ export default function TravelMap() {
             style={{
               background: "var(--card)",
               touchAction: "none",
-              cursor: drag.current ? "grabbing" : "grab",
+              cursor: dragging ? "grabbing" : "grab",
             }}
             role="img"
             aria-label="Zoomable world map with pins for places visited"

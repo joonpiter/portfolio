@@ -3,84 +3,65 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { profile } from "@/data/content";
 
-const tabs = [
-  { href: "/", label: "Home", match: (p: string) => p === "/" },
+const links = [
   { href: "/about", label: "About", match: (p: string) => p === "/about" },
   {
     href: "/experience",
     label: "Experience",
     match: (p: string) => p === "/experience",
   },
-  {
-    href: "/projects",
-    label: "Projects",
-    match: (p: string) => p === "/projects",
-  },
+  // Projects tab hidden for now — add back once real project write-ups
+  // are ready. The route itself still lives at src/app/projects/page.tsx.
   { href: "/blog", label: "Blog", match: (p: string) => p.startsWith("/blog") },
-  { href: "/#contact", label: "Contact", match: () => false },
 ];
 
 export default function Nav() {
   const pathname = usePathname() || "/";
 
   return (
-    <header className="sticky top-0 z-40">
-      {/* maroon MySpace header bar */}
-      <div className="bg-navy text-navy-foreground shadow-[0_4px_4px_rgba(0,0,0,0.25)]">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-2.5 sm:px-6">
-          <Link href="/" className="order-1 shrink-0">
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
+      <nav className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-3.5">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
+          <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full border border-border">
             <Image
-              src="/myspace-logo.png"
-              alt="myspace — a place for friends"
-              width={860}
-              height={272}
-              priority
-              className="h-9 w-auto sm:h-11"
+              src="/headshot-barcelona.jpg"
+              alt=""
+              fill
+              sizes="32px"
+              className="object-cover"
             />
-          </Link>
+          </span>
+          <span className="text-[14px] font-medium text-foreground">
+            {profile.name}
+          </span>
+        </Link>
 
-          <form
-            action="/"
-            className="order-3 flex w-full min-w-0 items-center gap-2 sm:order-2 sm:w-auto sm:flex-1"
-            role="search"
-          >
-            <span className="hidden shrink-0 text-sm sm:inline">Search:</span>
-            <input
-              type="search"
-              aria-label="Search"
-              className="h-7 min-w-0 flex-1 rounded-none border border-black/20 bg-white px-2 text-[13px] text-black sm:max-w-md"
-            />
-            <button
-              type="submit"
-              className="h-7 shrink-0 rounded-none border border-black/20 bg-white px-2 text-[12px] text-black"
-            >
-              Search
-            </button>
-          </form>
-
-          <p className="order-2 ml-auto shrink-0 text-[12px] tracking-wide sm:order-3 sm:text-sm">
-            HELP <span className="opacity-50">|</span> SIGN IN{" "}
-            <span className="opacity-50">|</span> SIGN OUT
-          </p>
-        </div>
-      </div>
-
-      {/* gold tab row */}
-      <nav className="tabrow border-b border-maroon-dark/20 backdrop-blur">
-        <ul className="mx-auto flex max-w-6xl flex-wrap gap-2 px-4 py-2 sm:gap-3 sm:px-6">
-          {tabs.map((tab) => (
-            <li key={tab.href}>
+        <ul className="flex items-center gap-5 text-[13.5px] text-muted">
+          {links.map((link) => (
+            <li key={link.href}>
               <Link
-                href={tab.href}
-                data-active={tab.match(pathname) ? "true" : "false"}
-                className="tab"
+                href={link.href}
+                className={
+                  link.match(pathname)
+                    ? "text-foreground"
+                    : "transition-colors hover:text-foreground"
+                }
               >
-                {tab.label}
+                {link.label}
               </Link>
             </li>
           ))}
         </ul>
+
+        <a
+          href={`mailto:${profile.email}`}
+          className="inline-flex shrink-0 items-center gap-1 rounded-full border border-border bg-card px-3.5 py-1.5 text-[13px] font-medium text-foreground transition-colors hover:border-foreground/40"
+        >
+          Say hello
+          <span aria-hidden>↗</span>
+        </a>
       </nav>
     </header>
   );

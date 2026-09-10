@@ -1,35 +1,36 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   MySpace-inspired UW Honors Portfolio — design tokens
-   Layout ported from Figma "UW Honors Portfolio / Home Page"; palette is a
-   Pacific Northwest set (Douglas fir, fern, madrona bark, Sound steel-blue,
-   fog). Type is the classic MySpace Verdana/Tahoma stack.
-   Token names (navy / tan / rust / maroon) are kept for compatibility — only
-   the values changed.
+   Editorial rebuild — inspired by danielshunom.vercel.app: warm paper, deep
+   forest ink, a single sage accent, Newsreader serif for display type over
+   Geist for everything else. Token *names* are kept from the previous
+   MySpace-era theme (navy / tan / rust / maroon / card / module / ms-link)
+   so components that reference them (TravelMap, SpotifyPlaylist, blog, etc.)
+   restyle automatically — only the values changed.
    ------------------------------------------------------------------------- */
 
 :root {
-  --background: #e9eddc; /* damp moss-cream */
-  --foreground: #1c221a; /* wet forest-floor ink */
-  --muted: #5c6a45; /* olive moss */
-  --border: #c5cbb0; /* dry moss */
-  --rule: #d9dfc6;
+  --background: #f7f6ef; /* warm paper */
+  --foreground: #253f34; /* deep forest ink */
+  --muted: #6b7a70; /* soft sage-gray */
+  --border: #d9ddd3; /* faint sage border */
+  --rule: #e2e5da;
 
-  /* dark chrome (header bar, contact, footer) */
-  --navy: #33492b; /* mossy bark green */
-  --navy-foreground: #eef1df; /* pale lichen */
+  /* dark chrome (footer, contact band) */
+  --navy: #1c2a22; /* near-black forest */
+  --navy-foreground: #f3f1e7; /* warm cream on dark */
 
-  /* nav tabs */
-  --tan: #6d8945; /* moss green */
-  --tan-dark: #516b33; /* moss border / hover */
-  --rust: #b06a44; /* madrona bark — active tab */
+  /* used by TravelMap for land / borders */
+  --tan: #cdc6ab; /* sand */
+  --tan-dark: #a89a73; /* sand, darker */
+  --rust: #2f6b55; /* sage accent — also used for map pins */
 
-  --maroon: #3b5a34; /* deep moss — module heads, headings, accents */
-  --maroon-dark: #2b4526;
-  --link: #3c6b64; /* spruce teal */
-  --cloud: #9db6c4; /* fog over water */
-  --card: #f3f6e7; /* moss-tinted white */
+  /* primary accent — headings, active states, emphasis, borders, badges */
+  --maroon: #2f6b55;
+  --maroon-dark: #23503f;
+  --link: #2f6b55;
+  --cloud: #9db6c4;
+  --card: #efeee6; /* card surface, a touch darker than background */
 }
 
 @theme inline {
@@ -49,102 +50,95 @@
   --color-cloud: var(--cloud);
   --color-card: var(--card);
 
-  /* The whole site is set in Verdana. */
-  --font-sans: Verdana, Geneva, Tahoma, "DejaVu Sans", sans-serif;
-  --font-mono: Verdana, Geneva, Tahoma, sans-serif;
-  --font-hand: Verdana, Geneva, Tahoma, sans-serif;
-  --font-display: Verdana, Geneva, Tahoma, sans-serif;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-newsreader);
+  --font-hand: var(--font-geist-sans);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans);
-  font-size: 14px; /* comfortable default; rem/Tailwind sizing stays on the 16px root */
-  line-height: 1.55;
+  font-size: 15px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Verdana everywhere — including form controls, which don't inherit by default */
-button,
-input,
-select,
-textarea {
-  font-family: var(--font-sans);
-}
-
 /* --- Page canvas -------------------------------------------------------- */
-/* Misted paper with a sparse, low-contrast evergreen sparkle tile — enough
-   texture to not read as blank, still calm. Runs edge to edge, including
-   right at the top of the content area. */
 .paper {
-  position: relative;
-  background-color: var(--background);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cg fill='%233b5a34' fill-opacity='0.08'%3E%3Cpath d='M34 14c2.4 9 4.6 11.2 13.6 13.6C38.6 30 36.4 32.2 34 41.2 31.6 32.2 29.4 30 20.4 27.6 29.4 25.2 31.6 23 34 14Z'/%3E%3Cpath d='M112 82c1.7 6.4 3.3 8 9.7 9.7-6.4 1.7-8 3.3-9.7 9.7-1.7-6.4-3.3-8-9.7-9.7 6.4-1.7 8-3.3 9.7-9.7Z'/%3E%3Ccircle cx='103' cy='27' r='2.4'/%3E%3Ccircle cx='47' cy='108' r='2.8'/%3E%3Ccircle cx='128' cy='138' r='1.8'/%3E%3Ccircle cx='12' cy='70' r='1.8'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 150px 150px;
-  background-position: center top;
+  background: var(--background);
 }
 
-/* Nav sits on the same canvas so the pattern reads continuously behind the
-   tab row instead of stopping at a hard cream band. */
 .tabrow {
-  background: color-mix(in srgb, var(--background) 82%, transparent);
+  background: color-mix(in srgb, var(--background) 90%, transparent);
 }
 
-.paper > * {
+/* --- Eyebrow label (icon + small caps), used above featured tiles -------- */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--maroon);
+}
+
+/* --- Featured tile: square corners, thick accent top border ------------- */
+.tile {
   position: relative;
-  z-index: 1;
+  display: block;
+  min-height: 280px;
+  padding: 26px 26px 30px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--maroon);
+  border-radius: 0;
 }
 
-.margin-rule {
-  /* kept as a no-op hook; the loose-leaf rule was removed */
+.tile-arrow {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  font-size: 18px;
+  color: var(--maroon);
 }
 
-/* --- MySpace module card ---------------------------------------------- */
+/* --- Card module --------------------------------------------------------- */
 .module {
   border: 1px solid var(--border);
   background: var(--card);
+  border-radius: 0.875rem;
+  overflow: hidden;
 }
 
 .module > .module-head {
-  background: var(--maroon);
-  color: var(--navy-foreground);
-  font-weight: 700;
+  color: var(--muted);
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  font-size: 0.78rem;
-  padding: 0.35rem 0.6rem;
+  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+  padding: 0.85rem 1rem 0.6rem;
+  border-bottom: 1px solid var(--border);
 }
 
 .ms-link {
   color: var(--link);
   text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: color-mix(in srgb, var(--link) 40%, transparent);
 }
 .ms-link:hover {
-  color: var(--maroon);
+  text-decoration-color: var(--link);
 }
 
-/* --- Nav tab pill --------------------------------------------------- */
-.tab {
-  display: block;
-  background: var(--tan);
-  color: #fff;
-  border: 1px solid var(--tan-dark);
-  padding: 0.3rem 1.1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-size: 0.82rem;
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.18);
-  transition: filter 0.15s ease;
-}
-.tab:hover {
-  filter: brightness(1.06);
-}
-.tab[data-active="true"] {
-  background: var(--rust);
-  border-color: #8a5030;
+/* Nudge the little arrow on hover. Written by hand with `transform` instead
+   of Tailwind's `group-hover:translate-x-*` utility — v4 generates those with
+   the standalone `translate` CSS property driven by a custom property, which
+   doesn't reliably repaint on :hover, so the nudge silently never appeared. */
+.group:hover .arrow-nudge {
+  transform: translateX(0.125rem);
 }
 
 @keyframes marquee {

@@ -1,100 +1,151 @@
+import Image from "next/image";
 import Link from "next/link";
 import { profile, myspace } from "@/data/content";
 import { posts } from "@/data/posts";
 import SpotifyPlaylist from "@/components/SpotifyPlaylist";
+import Scene3D from "@/components/Scene3D";
+
+// Projects tab is hidden for now — drop this once real project write-ups
+// are ready, and add a "Desk" station back for it.
+const stations = [
+  {
+    href: "/experience",
+    glyph: "⚗",
+    name: "Field notes",
+    caption: "Experience",
+  },
+  {
+    href: "/blog",
+    glyph: "¶",
+    name: "Notebook",
+    caption: "Blog",
+  },
+];
 
 export default function Hero() {
+  const latestPost = posts.find((p) => p.content.length > 0) ?? posts[0];
+
   return (
-    <section id="top" className="scroll-mt-32">
-      <div className="grid gap-6 lg:grid-cols-[1fr_320px] lg:items-start">
-        <div>
-          <p className="text-[12px] uppercase tracking-[0.14em] text-muted">
+    <div className="space-y-12">
+      <section id="top" className="text-center">
+        <div className="flex flex-col items-center">
+          <span className="relative h-14 w-14 overflow-hidden rounded-full border border-border">
+            <Image
+              src="/headshot-barcelona.jpg"
+              alt={`${profile.name} headshot`}
+              fill
+              sizes="56px"
+              className="object-cover"
+              priority
+            />
+          </span>
+          <p className="mt-3 text-[14px] text-foreground">
+            Hi, I&apos;m Isabel.
+          </p>
+          <p className="text-[12.5px] text-muted">
             {profile.school} · {profile.gradYear}
           </p>
-          <h2 className="mt-1 font-display text-3xl font-bold text-maroon sm:text-[36px]">
-            Welcome
-          </h2>
+        </div>
 
-          <p className="mt-3 border-l-2 border-maroon pl-3 text-[15px] italic text-foreground/75">
-            {myspace.headline}
-          </p>
+        <h1 className="mx-auto mt-6 max-w-xl font-display text-[34px] font-normal leading-[1.2] text-foreground sm:text-[42px]">
+          Building products{" "}
+          <em className="italic text-maroon">people actually use.</em>
+        </h1>
 
-          <div className="mt-4 space-y-3 text-[15px] leading-relaxed">
-            <p>
-              Hello! My name is {profile.name}, and I&apos;m a student at the
-              University of Washington studying Informatics with Interdisciplinary
-              Honors and a minor in Entrepreneurship.
-            </p>
-            <p>
-              I&apos;m interested in product management, having interned at
-              companies such as Bank of America and US Bank. I&apos;m also a
-              published author, with work presented at conferences such as ACM CHI
-              and RESPECT. Please look around to learn more about me — it&apos;s
-              MySpace-inspired, if you can&apos;t tell&nbsp;;)
-            </p>
-          </div>
+        <p className="mx-auto mt-5 max-w-md text-[14.5px] leading-relaxed text-muted">
+          Product management student at the University of Washington. PM
+          intern at Bank of America and US Bank — building things bankers
+          and traders actually use.
+        </p>
 
-          <div className="mt-5 flex flex-wrap items-center gap-3">
-            <a
-              href={`mailto:${profile.email}`}
-              className="border border-maroon-dark bg-maroon px-4 py-2 text-[13px] font-bold uppercase tracking-wide text-white shadow-[inset_0_-3px_0_rgba(0,0,0,0.18)] hover:brightness-110"
+        <a href={profile.links.resume} className="ms-link mt-3 inline-block text-[13px]">
+          Résumé (PDF) ↗
+        </a>
+
+        <Scene3D />
+        <p className="mt-1 text-[12px] text-muted">
+          Drag to look around · or use a station below
+        </p>
+
+        <div className="mx-auto mt-2 grid max-w-sm grid-cols-2 gap-3">
+          {stations.map((s) => (
+            <Link
+              key={s.href}
+              href={s.href}
+              className="group flex flex-col items-center gap-1.5 rounded-2xl border border-border bg-card px-4 py-5 transition-colors hover:border-foreground/30"
             >
-              Get in touch
-            </a>
-            <a href={profile.links.resume} className="ms-link text-[14px]">
-              Résumé (PDF)
-            </a>
-          </div>
+              <span className="text-lg text-maroon" aria-hidden>
+                {s.glyph}
+              </span>
+              <span className="text-[13.5px] font-medium text-foreground">
+                {s.name}
+              </span>
+              <span className="text-[11.5px] text-muted">
+                {s.caption}{" "}
+                <span className="arrow-nudge transition-transform">
+                  ↗
+                </span>
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
 
-          {/* blog feed */}
-          <div className="module mt-6">
-            <p className="module-head">Blog Feed</p>
-            <ul className="divide-y divide-border/60 px-4">
-              {posts.map((post) => (
-                <li key={post.slug} className="py-3">
-                  <div className="flex flex-wrap items-center gap-2 text-[11px] text-muted">
-                    <span className="border border-border bg-background px-1.5 py-0.5 uppercase tracking-wide">
-                      {post.tag}
-                    </span>
-                    <span>{post.date}</span>
-                  </div>
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="mt-1 block text-[14px] font-bold text-foreground hover:text-maroon"
-                  >
-                    {post.title}
-                  </Link>
-                  <p className="mt-0.5 text-[12.5px] leading-snug text-foreground/75">
-                    {post.excerpt}
-                  </p>
-                </li>
-              ))}
-            </ul>
-            <p className="border-t border-border px-4 py-2 text-[12px]">
-              <Link href="/blog" className="ms-link">
-                All entries →
-              </Link>
+      <hr className="border-border" />
+
+      <section aria-labelledby="now-label">
+        <p id="now-label" className="eyebrow">
+          Now
+        </p>
+        <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-foreground/85">
+          {myspace.nowSummary}
+        </p>
+      </section>
+
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <div>
+          <p className="eyebrow">
+            <span aria-hidden>♪</span> Profile playlist
+          </p>
+          <div className="mt-3">
+            <SpotifyPlaylist compact />
+          </div>
+        </div>
+
+        {latestPost && (
+          <div>
+            <p className="eyebrow">
+              <span aria-hidden>¶</span> From the notebook
             </p>
+            <Link href={`/blog/${latestPost.slug}`} className="tile mt-3">
+              {latestPost.image && (
+                <span className="relative -mx-[26px] -mt-[26px] mb-4 block aspect-[16/9] overflow-hidden">
+                  <Image
+                    src={latestPost.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 480px, 90vw"
+                    className="object-cover"
+                  />
+                </span>
+              )}
+              <p className="text-[11px] text-muted">{latestPost.date}</p>
+              <h3 className="mt-1 font-display text-[24px] font-normal text-foreground">
+                {latestPost.title}
+              </h3>
+              <p className="mt-1.5 text-[13.5px] leading-relaxed text-foreground/75">
+                {latestPost.excerpt}
+              </p>
+              <span className="tile-arrow" aria-hidden>
+                ↗
+              </span>
+            </Link>
+            <Link href="/blog" className="ms-link mt-2 inline-block text-[12.5px]">
+              All writing →
+            </Link>
           </div>
-        </div>
-
-        {/* right rail: playlist, then what I'm up to */}
-        <div className="w-full max-w-md space-y-6 lg:max-w-none">
-          <SpotifyPlaylist />
-
-          <div className="module">
-            <p className="module-head">Currently</p>
-            <dl className="divide-y divide-border/60 px-4 py-1 text-[13px]">
-              {myspace.now.map(([k, v]) => (
-                <div key={k} className="grid grid-cols-[80px_1fr] gap-3 py-2">
-                  <dt className="font-bold text-maroon">{k}</dt>
-                  <dd className="text-foreground/85">{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
+        )}
       </div>
-    </section>
+    </div>
   );
 }
