@@ -74,16 +74,23 @@ export default async function BlogPost(props: PageProps<"/blog/[slug]">) {
         ) : (
           <>
             {post.image && (
-              <span className="relative mt-8 block aspect-[16/9] w-full overflow-hidden rounded-xl border border-border">
-                <Image
-                  src={post.image}
-                  alt=""
-                  fill
-                  sizes="(min-width: 768px) 720px, 100vw"
-                  className="object-cover"
-                  priority
-                />
-              </span>
+              <figure className="mt-8">
+                <span className="relative block aspect-[3/2] w-full overflow-hidden rounded-xl border border-border">
+                  <Image
+                    src={post.image}
+                    alt={post.imageCaption ?? ""}
+                    fill
+                    sizes="(min-width: 768px) 720px, 100vw"
+                    className="object-cover"
+                    priority
+                  />
+                </span>
+                {post.imageCaption && (
+                  <figcaption className="mt-2 text-[12.5px] leading-relaxed text-muted">
+                    {post.imageCaption}
+                  </figcaption>
+                )}
+              </figure>
             )}
 
             <div className="mt-8 max-w-2xl space-y-5 text-[15px] leading-[1.75] text-foreground/85">
