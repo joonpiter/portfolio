@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import { profile } from "@/data/content";
 import "./globals.css";
@@ -30,7 +31,27 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        {/*
+          The Spline room's hotspot overlay runs in a sandboxed iframe that
+          can't navigate the top window, so it posts
+          { type: "spline-nav", href: "/…" } instead. This listener catches it
+          and navigates. beforeInteractive so it's live before any page code
+          (and the scene) loads. Only internal paths are honoured.
+        */}
+        <Script id="spline-nav-bridge" strategy="beforeInteractive">
+          {`
+      window.addEventListener('message', function (e) {
+        var d = e && e.data;
+        if (d && d.type === 'spline-nav' && typeof d.href === 'string' && d.href.charAt(0) === '/') {
+          console.log('[spline-nav] received ->', d.href);
+          window.location.assign(d.href);
+        }
+      });
+    `}
+        </Script>
+        {children}
+      </body>
     </html>
   );
 }
