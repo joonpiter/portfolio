@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -16,6 +17,74 @@ const links = [
   // are ready. The route itself still lives at src/app/projects/page.tsx.
   { href: "/blog", label: "Blog", match: (p: string) => p.startsWith("/blog") },
 ];
+
+/** The "Say hello" nav pill — opens a small card with contact info instead of
+ *  jumping straight to a mailto: link. */
+function SayHello() {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onPointerDown = (e: PointerEvent) => {
+      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
+  return (
+    <div ref={rootRef} className="relative shrink-0">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-haspopup="dialog"
+        className="inline-flex items-center gap-1 rounded-full border border-border bg-card px-3.5 py-1.5 text-[13px] font-medium text-foreground transition-colors hover:border-foreground/40"
+      >
+        Say hello
+        <span aria-hidden>↗</span>
+      </button>
+
+      {open && (
+        <div
+          role="dialog"
+          aria-label="Contact"
+          className="absolute right-0 top-[calc(100%+10px)] w-60 rounded-2xl border border-border bg-card p-4 shadow-lg"
+        >
+          <p className="text-[11px] font-medium uppercase tracking-wide text-muted">
+            Get in touch
+          </p>
+          <div className="mt-2.5 flex flex-col gap-2 text-[13px]">
+            <a
+              href={`mailto:${profile.email}`}
+              className="text-foreground transition-colors hover:text-maroon"
+            >
+              {profile.email} <span aria-hidden>↗</span>
+            </a>
+            <a
+              href={profile.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground transition-colors hover:text-maroon"
+            >
+              LinkedIn <span aria-hidden>↗</span>
+            </a>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Nav() {
   const pathname = usePathname() || "/";
@@ -55,13 +124,7 @@ export default function Nav() {
           ))}
         </ul>
 
-        <a
-          href={`mailto:${profile.email}`}
-          className="inline-flex shrink-0 items-center gap-1 rounded-full border border-border bg-card px-3.5 py-1.5 text-[13px] font-medium text-foreground transition-colors hover:border-foreground/40"
-        >
-          Say hello
-          <span aria-hidden>↗</span>
-        </a>
+        <SayHello />
       </nav>
     </header>
   );

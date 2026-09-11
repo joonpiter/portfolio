@@ -44,9 +44,9 @@ export default function Scene3D() {
         <div
           ref={boxRef}
           style={{
-            // Negative top margin tucks the box up under the text above,
-            // trimming the gap without cropping into the room. Tune the -7rem.
-            margin: "-7rem auto 0",
+            // Small negative top margin tucks the box up under the caption
+            // above without cropping into the room. Tune the -1.5rem.
+            margin: "-1.5rem auto 0",
             aspectRatio: "5 / 4",
             width: "100%",
             maxWidth: "1300px",

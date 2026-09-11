@@ -47,6 +47,10 @@ export default function Hero() {
           Résumé (PDF) ↗
         </a>
 
+        <p className="mt-4 text-[12px] text-muted">
+          Hover an object in the room to see where it takes you.
+        </p>
+
         <Scene3D />
       </section>
 
