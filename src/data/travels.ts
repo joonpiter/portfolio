@@ -38,6 +38,7 @@ export const travels: Place[] = [
   { city: "Urbana", region: "IL", country: "USA", lat: 40.11, lng: -88.21 },
   { city: "Chicago", region: "IL", country: "USA", lat: 41.88, lng: -87.63 },
   { city: "Indianapolis", region: "IN", country: "USA", lat: 39.77, lng: -86.16 },
+  { city: "St. Louis", region: "MO", country: "USA", lat: 38.63, lng: -90.2 },
   { city: "New Orleans", region: "LA", country: "USA", lat: 29.95, lng: -90.07 },
   { city: "Orlando", region: "FL", country: "USA", lat: 28.54, lng: -81.38 },
   { city: "Charlotte", region: "NC", country: "USA", lat: 35.23, lng: -80.84 },

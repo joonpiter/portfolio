@@ -16,6 +16,11 @@ const links = [
   // Projects tab hidden for now — add back once real project write-ups
   // are ready. The route itself still lives at src/app/projects/page.tsx.
   { href: "/blog", label: "Blog", match: (p: string) => p.startsWith("/blog") },
+  {
+    href: "/office-hours",
+    label: "Office hours",
+    match: (p: string) => p === "/office-hours",
+  },
 ];
 
 /** The "Say hello" nav pill — opens a small card with contact info instead of
@@ -80,6 +85,13 @@ function SayHello() {
               LinkedIn <span aria-hidden>↗</span>
             </a>
           </div>
+          <Link
+            href="/office-hours"
+            onClick={() => setOpen(false)}
+            className="mt-3 block border-t border-border pt-3 text-[12.5px] text-muted transition-colors hover:text-foreground"
+          >
+            Student? Grab some office hours →
+          </Link>
         </div>
       )}
     </div>
@@ -110,12 +122,16 @@ export default function Nav() {
         <ul className="flex items-center gap-5 text-[13.5px] text-muted">
           {links.map((link) => (
             <li key={link.href}>
+              {/* py + negative my extend the tap target toward Apple's 28pt
+                  touch minimum (measured 37×18 before) without changing the
+                  visible text size or the nav bar's own height. */}
               <Link
                 href={link.href}
                 className={
-                  link.match(pathname)
+                  "inline-block -my-2.5 whitespace-nowrap py-2.5 " +
+                  (link.match(pathname)
                     ? "text-foreground"
-                    : "transition-colors hover:text-foreground"
+                    : "transition-colors hover:text-foreground")
                 }
               >
                 {link.label}

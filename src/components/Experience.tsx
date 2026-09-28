@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   ExperienceItem,
   experience,
@@ -6,6 +7,8 @@ import {
   profile,
   about,
 } from "@/data/content";
+import { decisions } from "@/data/decisions";
+import { visible } from "@/data/drafts";
 
 function RoleList({ items }: { items: ExperienceItem[] }) {
   return (
@@ -45,6 +48,12 @@ export default function Experience() {
           support: Bank of America, US Bank, AARP, and IBM. Updated September
           2026.
         </p>
+
+        {visible(decisions).length > 0 && (
+          <Link href="/decisions" className="ms-link mt-4 inline-block text-[14px]">
+            The calls I made in each role, NDA-safe →
+          </Link>
+        )}
       </section>
 
       <section aria-labelledby="work-label">

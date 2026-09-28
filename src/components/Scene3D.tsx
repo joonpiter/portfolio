@@ -8,6 +8,17 @@ import Script from "next/script";
 // through webpack/Turbopack at all, so it doesn't hit the bundler asset
 // resolution issues that package's compiled bundle has for its optional
 // DRACO/boolean decoders.
+
+// Spline serves scene.splinecode with no Cache-Control header, so browsers
+// guess how long to keep it and can hold an old copy for hours after you
+// republish. Changing this value changes the URL, which forces every browser
+// to fetch the new scene. Bump it (any new string works) each time you
+// republish the room in Spline. Because the URL no longer ends in
+// ".splinecode", the viewer logs "only accepts .splinecode files" in the
+// console. That warning is harmless: it still loads the file normally.
+const SCENE_VERSION = "2026-09-28.2";
+const SCENE_URL = `https://prod.spline.design/MW-bcCyWXY4aSNeD/scene.splinecode?v=${SCENE_VERSION}`;
+
 export default function Scene3D() {
   const boxRef = useRef<HTMLDivElement>(null);
 
@@ -55,7 +66,7 @@ export default function Scene3D() {
           }}
         >
           <spline-viewer
-            url="https://prod.spline.design/MW-bcCyWXY4aSNeD/scene.splinecode"
+            url={SCENE_URL}
             style={{
               display: "block",
               width: "100%",

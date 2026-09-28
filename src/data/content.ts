@@ -19,6 +19,9 @@ export const profile = {
     resume: "/resume.pdf", // drop your resume PDF in /public as resume.pdf
     github: "", // optional, leave blank to hide
     acm: "https://dl.acm.org/profile/99661920637", // ACM Digital Library author profile
+    // Paste a Calendly / Cal.com link here and the "Book a time" button on
+    // /office-hours switches from email to your booking page.
+    officeHours: "https://calendar.app.google/nngnoz6RR3gUeDX68",
   },
 };
 
@@ -110,7 +113,7 @@ export const education = {
   gradYear: "June 2027",
   gpa: "3.7", // remove this line in AboutSection.tsx if you'd rather not share it
   organizations: [
-    "Colortack",
+    "ColorStack",
     "Rewrite the Code",
     "NCWIT",
     "SHPE",

@@ -113,9 +113,9 @@ export default function About() {
                 {item.period}
               </p>
               <div>
-                <h3 className="font-display text-[19px] font-normal leading-snug text-foreground">
+                <h2 className="font-display text-[19px] font-normal leading-snug text-foreground">
                   {item.org}
-                </h3>
+                </h2>
                 <p className="mt-0.5 text-[13.5px] text-foreground/80">
                   {item.role}
                 </p>
@@ -136,9 +136,9 @@ export default function About() {
         <div className="mt-6 space-y-6">
           {skillGroups.map((group) => (
             <div key={group.label}>
-              <h3 className="font-display text-[18px] font-normal text-foreground">
+              <h2 className="font-display text-[18px] font-normal text-foreground">
                 {group.label}
-              </h3>
+              </h2>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {group.items.map((item) => (
                   <li

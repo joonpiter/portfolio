@@ -285,7 +285,7 @@ export default function TravelMap() {
 
           {tip && (
             <div
-              className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-[calc(100%+16px)] whitespace-nowrap border border-maroon-dark bg-maroon px-2 py-1 text-[11px] font-bold text-white shadow-[2px_2px_0_rgba(0,0,0,0.2)]"
+              className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-[calc(100%+16px)] whitespace-nowrap border border-maroon-dark bg-maroon px-2 py-1 text-[11px] font-bold text-background shadow-[2px_2px_0_rgba(0,0,0,0.2)]"
               style={{ left: `${tip.left}%`, top: `${tip.top}%` }}
             >
               {tip.label}

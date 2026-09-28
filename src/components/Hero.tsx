@@ -93,9 +93,9 @@ export default function Hero() {
                 </span>
               )}
               <p className="text-[11px] text-muted">{latestPost.date}</p>
-              <h3 className="mt-1 font-display text-[24px] font-normal text-foreground">
+              <h2 className="mt-1 font-display text-[24px] font-normal text-foreground">
                 {latestPost.title}
-              </h3>
+              </h2>
               <p className="mt-1.5 text-[13.5px] leading-relaxed text-foreground/75">
                 {latestPost.excerpt}
               </p>

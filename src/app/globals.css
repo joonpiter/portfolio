@@ -12,7 +12,10 @@
 :root {
   --background: #f7f6ef; /* warm paper */
   --foreground: #253f34; /* deep forest ink */
-  --muted: #6b7a70; /* soft sage-gray */
+  /* Was #6b7a70 — measured 4.17:1 on --background / 3.89:1 on --card, both
+     below the 4.5:1 floor for text under 18px (this color is used as small
+     as 11px). Darkened until both surfaces clear 4.5:1 with margin. */
+  --muted: #576659; /* soft sage-gray, contrast-checked */
   --border: #d9ddd3; /* faint sage border */
   --rule: #e2e5da;
 
@@ -31,6 +34,25 @@
   --link: #2f6b55;
   --cloud: #9db6c4;
   --card: #efeee6; /* card surface, a touch darker than background */
+}
+
+/* Dark Mode — follows the system setting only; no in-app toggle (per HIG:
+   an app-specific appearance switch creates more work for people and reads
+   as broken when it doesn't match their systemwide choice). Values are
+   contrast-checked against both --background and --card, not just inverted:
+   foreground 13.2:1 / 11.3:1, muted 6.2:1 / 5.3:1, accent 5.6:1 / 4.8:1. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1c2a22;
+    --foreground: #f3f1e7;
+    --muted: #9caa9f;
+    --border: #34443a;
+    --rule: #2c3b32;
+    --card: #26362c;
+    --maroon: #5fae8c;
+    --maroon-dark: #7fcaa8;
+    --link: #5fae8c;
+  }
 }
 
 @theme inline {
@@ -62,6 +84,21 @@ body {
   font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Keyboard focus indicator. Nothing in this file removes the browser's
+   default outline, but the utility-class reset that ships with the framework
+   does (verified: focused links/buttons/inputs computed outline-style:none
+   with no box-shadow standing in for it — keyboard navigation was invisible).
+   :focus-visible keeps this out of the way of mouse clicks and only shows for
+   keyboard/assistive-tech use, matching macOS's own keyboard focus ring. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--maroon);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* --- Page canvas -------------------------------------------------------- */

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { profile } from "@/data/content";
+import { currentVersion } from "@/data/changelog";
 
 export default function Footer() {
   const links = [
@@ -14,6 +15,13 @@ export default function Footer() {
       <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-5 py-6 text-[13px] text-muted">
         <span>
           © {new Date().getFullYear()} {profile.name}
+          <Link
+            href="/changelog"
+            className="ml-2 transition-colors hover:text-foreground"
+            aria-label={`Version ${currentVersion} release notes`}
+          >
+            v{currentVersion}
+          </Link>
         </span>
 
         <span className="flex flex-wrap items-center gap-x-5 gap-y-2">

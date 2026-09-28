@@ -46,7 +46,7 @@ export default function Notebook({ posts }: { posts: Post[] }) {
                 className={
                   "rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors " +
                   (active
-                    ? "bg-maroon text-navy-foreground"
+                    ? "bg-maroon text-background"
                     : "text-muted hover:text-foreground")
                 }
               >
@@ -114,16 +114,16 @@ export default function Notebook({ posts }: { posts: Post[] }) {
                 {/* body */}
                 <div>
                   {isEssay ? (
-                    <h3 className="font-display text-[22px] font-normal leading-snug text-foreground transition-colors group-hover:text-maroon">
+                    <h2 className="font-display text-[22px] font-normal leading-snug text-foreground transition-colors group-hover:text-maroon">
                       <span className="text-maroon" aria-hidden>
                         ¶{" "}
                       </span>
                       {post.title}
-                    </h3>
+                    </h2>
                   ) : (
-                    <h3 className="text-[16px] font-bold text-foreground transition-colors group-hover:text-maroon">
+                    <h2 className="text-[16px] font-bold text-foreground transition-colors group-hover:text-maroon">
                       {post.title}
-                    </h3>
+                    </h2>
                   )}
                   <p
                     className={
