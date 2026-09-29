@@ -197,13 +197,6 @@ export const leadership: ExperienceItem[] = [
       "Building and leading a campus AI community at UW that empowers students of all backgrounds to build with Claude.",
   },
   {
-    role: "Director of Product",
-    org: "Campus to Career — Dallas, TX (Remote)",
-    period: "July 2026 — Present",
-    summary:
-      "Own the roadmap for a platform connecting students to career opportunities they'd otherwise miss.",
-  },
-  {
     role: "Diversity & Inclusion Committee Member",
     org: "Women in Informatics — Seattle, WA",
     period: "June 2026 — Present",
