@@ -154,7 +154,7 @@ export const experience: ExperienceItem[] = [
   {
     role: "Product Management Intern",
     org: "Bank of America — New York City, NY",
-    period: "June 2026 — Present",
+    period: "June 2026 — August 2026",
     summary:
       "Built a click-in dashboard feature for traders to view the critical components of a basket, cutting handling time by 64%, and conducted the first phase of discovery for an AI-first SDLC within GMT.",
   },
@@ -189,6 +189,13 @@ export const experience: ExperienceItem[] = [
 ];
 
 export const leadership: ExperienceItem[] = [
+  {
+    role: "Claude Campus Ambassador",
+    org: "Anthropic — Seattle, WA",
+    period: "September 2026 — Present",
+    summary:
+      "Building and leading a campus AI community at UW that empowers students of all backgrounds to build with Claude.",
+  },
   {
     role: "Director of Product",
     org: "Campus to Career — Dallas, TX (Remote)",
