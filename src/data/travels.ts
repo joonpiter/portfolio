@@ -27,6 +27,10 @@ export const travels: Place[] = [
   { city: "Los Angeles", region: "CA", country: "USA", lat: 34.05, lng: -118.24 },
   { city: "Las Vegas", region: "NV", country: "USA", lat: 36.17, lng: -115.14 },
 
+  // Hawaii
+  { city: "Honolulu", region: "HI", country: "USA", lat: 21.31, lng: -157.86 },
+  { city: "Maui", region: "HI", country: "USA", lat: 20.8, lng: -156.33 },
+
   // Mexico
   { city: "Mexicali", region: "BC", country: "Mexico", lat: 32.65, lng: -115.47 },
   { city: "Tijuana", region: "BC", country: "Mexico", lat: 32.51, lng: -117.04 },
