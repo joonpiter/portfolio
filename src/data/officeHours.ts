@@ -12,8 +12,14 @@
 // mug instead of the booking page. Set back to true to reopen everything.
 export const officeHoursOpen = false;
 
-export const awayMessage =
-  "I have received overwhelming interest and will be away traveling for the next couple of weeks, so I don't have the capacity to take on more. Come back soon!";
+export const awayMessage = {
+  title: "Thank you to everyone who booked!",
+  body: [
+    "I've received overwhelming interest, and I'll be away traveling for the next couple of weeks.",
+    "I'm also taking some personal time off to work on a product I hope to share with y'all soon.",
+  ],
+  signoff: "Please check back soon!",
+};
 
 export const topics: string[] = [
   "Landing a first PM internship as an undergrad",

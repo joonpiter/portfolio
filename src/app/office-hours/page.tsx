@@ -22,9 +22,17 @@ export default function OfficeHoursPage() {
       <ProfileShell>
         <section className="flex min-h-[55vh] flex-col items-center justify-center text-center">
           <TeaMug className="h-36 w-auto" />
-          <h1 className="eyebrow mt-6">Office hours</h1>
-          <p className="mt-4 max-w-md font-display text-[22px] leading-snug text-foreground">
-            {awayMessage}
+          <p className="eyebrow mt-6">Office hours</p>
+          <h1 className="mt-3 font-display text-[30px] font-normal leading-tight text-foreground sm:text-[34px]">
+            {awayMessage.title}
+          </h1>
+          <div className="mt-4 max-w-[26rem] space-y-3 text-[15px] leading-relaxed text-muted">
+            {awayMessage.body.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
+          <p className="mt-5 text-[14px] font-medium text-maroon">
+            {awayMessage.signoff}
           </p>
         </section>
       </ProfileShell>
