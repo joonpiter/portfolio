@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { profile } from "@/data/content";
+import { officeHoursOpen } from "@/data/officeHours";
 
 const links = [
   { href: "/about", label: "About", match: (p: string) => p === "/about" },
@@ -85,13 +86,15 @@ function SayHello() {
               LinkedIn <span aria-hidden>↗</span>
             </a>
           </div>
-          <Link
-            href="/office-hours"
-            onClick={() => setOpen(false)}
-            className="mt-3 block border-t border-border pt-3 text-[12.5px] text-muted transition-colors hover:text-foreground"
-          >
-            Student? Grab some office hours →
-          </Link>
+          {officeHoursOpen && (
+            <Link
+              href="/office-hours"
+              onClick={() => setOpen(false)}
+              className="mt-3 block border-t border-border pt-3 text-[12.5px] text-muted transition-colors hover:text-foreground"
+            >
+              Student? Grab some office hours →
+            </Link>
+          )}
         </div>
       )}
     </div>

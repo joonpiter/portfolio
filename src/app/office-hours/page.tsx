@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import ProfileShell from "@/components/ProfileShell";
 import DraftTag from "@/components/DraftTag";
+import TeaMug from "@/components/TeaMug";
 import { profile, contactEmail } from "@/data/content";
-import { topics, communities, guide } from "@/data/officeHours";
+import {
+  topics,
+  communities,
+  guide,
+  officeHoursOpen,
+  awayMessage,
+} from "@/data/officeHours";
 import { visible } from "@/data/drafts";
 
 export const metadata: Metadata = {
@@ -10,6 +17,20 @@ export const metadata: Metadata = {
 };
 
 export default function OfficeHoursPage() {
+  if (!officeHoursOpen) {
+    return (
+      <ProfileShell>
+        <section className="flex min-h-[55vh] flex-col items-center justify-center text-center">
+          <TeaMug className="h-36 w-auto" />
+          <h1 className="eyebrow mt-6">Office hours</h1>
+          <p className="mt-4 max-w-md font-display text-[22px] leading-snug text-foreground">
+            {awayMessage}
+          </p>
+        </section>
+      </ProfileShell>
+    );
+  }
+
   const bookingUrl = profile.links.officeHours;
   const bookingHref =
     bookingUrl ||

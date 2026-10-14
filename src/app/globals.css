@@ -183,8 +183,51 @@ input:focus-visible,
   animation: marquee 26s linear infinite;
 }
 
+/* --- Tea mug (office hours "away" state) ------------------------------- */
+@keyframes mug-steam {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  35% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes mug-tag {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+.mug-steam {
+  opacity: 0;
+  animation: mug-steam 2.7s ease-out infinite;
+}
+
+.mug-tag {
+  transform-box: view-box;
+  transform-origin: 33px 91px; /* where the string meets the tag */
+  animation: mug-tag 3.2s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee {
     animation: none;
+  }
+  .mug-steam,
+  .mug-tag {
+    animation: none;
+  }
+  .mug-steam {
+    opacity: 0.5;
   }
 }

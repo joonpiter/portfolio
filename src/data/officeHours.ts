@@ -8,6 +8,13 @@
 // your words, set draft: false, and it goes live on the next deploy.
 // ---------------------------------------------------------------------------
 
+// Paused while I'm traveling: /office-hours shows the "away" message and the
+// mug instead of the booking page. Set back to true to reopen everything.
+export const officeHoursOpen = false;
+
+export const awayMessage =
+  "I have received overwhelming interest and will be away traveling for the next couple of weeks, so I don't have the capacity to take on more. Come back soon!";
+
 export const topics: string[] = [
   "Landing a first PM internship as an undergrad",
   "Resumes, and telling your story with the numbers you're allowed to share",
